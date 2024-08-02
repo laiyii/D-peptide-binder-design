@@ -29,7 +29,7 @@ $HSD/curled_lib/generated_lib
 
 ### Docking of the helical scaffolds to the target
 #### Flip the target into D-type
-Before docking, please flip your target to D-type. Note that input file type should be a pdb file **with hydrogens removed**.
+Before docking, please flip your target to D-type, with residue names unchanged. Note that input file type should be a pdb file **with hydrogens removed**.
 ```shell
 chmod +x $HSD/docking/mirror_target/mirror_target.sh
 $HSD/docking/mirror_target/mirror_target.sh -i your_input_file.pdb -o your_output_file.pdb
@@ -50,8 +50,10 @@ python3 $HSD/docking/mirror_target/surf_protein.py -i_asa mono_mirror_noh.asa -i
 
 #### Helix scaffolds docking
 
-
-
+```shell
+gcc $HSD/docking/HelixScaffoldDocking/HelixScaffoldDocking_batch.c -o $HSD/docking/HelixScaffoldDocking/HelixScaffoldDocking_batch -lm
+```
+Here, we perform docking tasks in batch. The input options include
 
 
 ### Loop modeling with CCD
