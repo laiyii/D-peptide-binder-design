@@ -4,7 +4,9 @@ Welcome to D-peptide binder design project! This repository is the source code f
 If you have any questions, please discuss in [Issues](https://github.com/laiyii/D-peptide-binder-design/issues).
 
 ## Installation
+### Rosetta
 
+### Naccess
 
 
 
@@ -27,14 +29,29 @@ $HSD/curled_lib/generated_lib
 
 ### Docking of the helical scaffolds to the target
 #### Flip the target into D-type
-Before docking, please flip your target to D-type. Note that input file type should be pdb **with hydrogens removed**.
+Before docking, please flip your target to D-type. Note that input file type should be a pdb file **with hydrogens removed**.
 ```shell
 chmod +x $HSD/docking/mirror_target/mirror_target.sh
 $HSD/docking/mirror_target/mirror_target.sh -i your_input_file.pdb -o your_output_file.pdb
 ```
 The default output of `-o` is your_input_file_mirror.pdb
+#### Surface residues remark
+To generate grid scores, we need to define surface atoms (with atom-wise SASA larger than 1 Å²).
+```shell
+./naccess your_input_file_mirror.pdb
+```
+> **Note:** For usage of naccess, see [Naccess homepage](http://www.bioinf.manchester.ac.uk/naccess/).
+
+With the asa file, we will edit the target structure file at column 70. Surface atoms are marked as 1, while internal atoms are 0: 
+```shell
+python3 $HSD/docking/mirror_target/surf_protein.py -i_asa mono_mirror_noh.asa -i your_input_file_mirror.pdb -o your_input_file_mirror_surf.pdb
+```
+`-i_asa` is the output file of Naccess.
 
 #### Helix scaffolds docking
+
+
+
 
 
 ### Loop modeling with CCD
