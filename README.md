@@ -1,14 +1,15 @@
 # Targeting SARS-CoV-2 Main Protease with D-peptides
-Welcome to D-peptide binder design project! This repository is the source code for Targeting SARS-CoV-2 Main Protease with D-peptides.
+Welcome to D-peptide binder design project 😃 This repository is the source code for Targeting SARS-CoV-2 Main Protease with D-peptides.
 ![workflow](https://github.com/laiyii/D-peptide-binder-design/blob/main/Dpep_fig1.png)
 If you have any questions, please discuss in [Issues](https://github.com/laiyii/D-peptide-binder-design/issues).
 
 ## Installation
-### Rosetta
+```shell
 
-### Naccess
-
-
+```
+### Other applications in the workflow
+- [Naccess](http://www.bioinf.manchester.ac.uk/naccess/)
+- [Rosetta3.11](https://downloads.rosettacommons.org/software/academic/)
 
 ## Tutorial
 ### Prepare curled L-helical scaffolds
@@ -69,12 +70,29 @@ $HSD/docking/HelixScaffoldDocking/batch_info_example
 The input scaffold file and output file is separated by spaces.
 
 ### Loop modeling with CCD
-
-
-
-
-
+The following adjustments need to be made to the output structure.
+1. Replace the target structure with the initial structure (containing H atoms) and name it to chain B.
+2. Add H atoms to polyALA scaffold (ligand) and name it to chain A.
+3. Rearrange the complex structure, put ligand to the first.
+Then running loop modeling:
+```shell
+loopmodel.mpi.linuxgccrelease @ccd.flags
+```
+Required files for CCD loop modeling is in:<br>
+```text
+$HSD/docking/loop_modeling
+```
 ### Sequence design
+Before sequence design, residue name of target (chain B) should be changed.
+```shell
+python3 $HSD/sequence_design/change_chainB_to_D_type.py -i input_file.pdb
+```
+Sequence design is excecuted by RosettaScripts. A template xml file is in:<br>
+```text
+rosetta_scripts.mpi.linuxgccrelease @$HSD/sequence_design/Dpep_design.flags
+```
+
+
 
 
 
