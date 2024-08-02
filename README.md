@@ -49,15 +49,33 @@ python3 $HSD/docking/mirror_target/surf_protein.py -i_asa mono_mirror_noh.asa -i
 `-i_asa` is the output file of Naccess.
 
 #### Helix scaffolds docking
-
+Compile the file first.
 ```shell
 gcc $HSD/docking/HelixScaffoldDocking/HelixScaffoldDocking_batch.c -o $HSD/docking/HelixScaffoldDocking/HelixScaffoldDocking_batch -lm
 ```
-Here, we perform docking tasks in batch. The input options include
-
+Running the program with:
+```shell
+chmod +x ./$HSD/docking/HelixScaffoldDocking/HSD_batch.sh
+./$HSD/docking/HelixScaffoldDocking/HSD_batch.sh -t target_processed.pdb -b batch_info -a central_atom_id
+```
+Docking tasks are performed in batch. The input options include:<br>
+- `-t` Processed target structure.
+- `-b` A text file containing input scaffolds location and output file names.
+- `-a` Atom ID, the ID of atom as the center of docking box.
+Here's an example for batch_info:
+```text
+$HSD/docking/HelixScaffoldDocking/batch_info_example
+```
+The input scaffold file and output file is separated by spaces.
 
 ### Loop modeling with CCD
 
+
+
+
+
 ### Sequence design
+
+
 
 
