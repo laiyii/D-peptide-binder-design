@@ -1,7 +1,7 @@
 # Targeting SARS-CoV-2 Main Protease with D-peptides
 Welcome to D-peptide binder design project 😃 This repository is the source code for Targeting SARS-CoV-2 Main Protease with D-peptides.
 ![workflow](https://github.com/laiyii/D-peptide-binder-design/blob/main/Dpep_fig1.png)
-If you have any questions, please discuss in [Issues](https://github.com/laiyii/D-peptide-binder-design/issues).
+If you have any questions, feel free to discuss in [Issues](https://github.com/laiyii/D-peptide-binder-design/issues) or contact Laiyi (fly_ccme@pku.edu.cn).
 
 ## Installation
 ```shell
