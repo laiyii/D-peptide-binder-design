@@ -23,10 +23,7 @@ chmod +x $HSD/curled_lib/script/curl_helix_gen.sh
 $HSD/curled_lib/script/curl_helix_gen.sh -o H_-62_-39_-3_-1_-60.pdb -outdir helix_lib -len 21 -phi0 -62.0 -delphi -3.0 -psi0 -39.0 -delpsi -1.0 -phase -60.0 --
 ```
 where `-o` and `-outdir` defines the output name and output directory, `-len` is the length of the polyALA sequence. Rational range of other parameters are shown in [Table S1].<br>
-We also provide helix scaffold library with various lengths (21 aa, 24 aa, 28 aa, 31 aa, 35 aa, 38 aa, and 42 aa) already generated in this work:
-```shell
-$HSD/curled_lib/generated_lib
-```
+We also provide helix scaffold library with various lengths (21 aa, 24 aa, 28 aa, 31 aa, 35 aa, 38 aa, and 42 aa) already generated in this work. Click [here](https://1drv.ms/u/c/1838b20033e25fae/EcgmP7MWDtxGiOSvWAjSSzwBrgVcsVyyKKK8k4YAJU5nkg?e=Xm1Qxd) to download.
 
 ### Docking of the helical scaffolds to the target
 #### Flip the target into D-type
