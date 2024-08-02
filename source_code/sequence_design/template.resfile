@@ -1,0 +1,5 @@
+NATAA # this default command applies to all residues that are not given non-default commands
+
+start
+
+* A PIKAA ADEFGHIKLMNPQRSTVYW

@@ -1,0 +1,13 @@
+-in:file:fullatom
+-in:file:l pdblist
+-loops:loop_file 2_27_0.loop
+-loops:frag_sizes 9 3 1
+-loops:frag_files  t001_.200.9mers t001_.200.3mers none
+-loops:remodel quick_ccd
+-loops:refine no
+-mute core.io.database
+-nstruct 30
+-ignore_zero_occupancy false
+-out:prefix ccd_
+-beta_nov16
+-out:path:pdb result/
