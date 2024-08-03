@@ -15,7 +15,7 @@ source ~/.bashrc
 - [Naccess](http://www.bioinf.manchester.ac.uk/naccess/)
 - [Rosetta3.11](https://downloads.rosettacommons.org/software/academic/)
 - [gmx_MMPBSA](https://pubs.acs.org/doi/10.1021/acs.jctc.1c00645)
-- [PASTA](https://doi.org/10.1093/nar/gku399)
+- [PASTA2.0](https://doi.org/10.1093/nar/gku399)
 
 ## Tutorial
 ### Prepare curled L-helical scaffolds
