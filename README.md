@@ -96,7 +96,10 @@ rosetta_scripts.mpi.linuxgccrelease @$DPEP/sequence_design/Dpep_design.flags
 ```
 
 ### Sequence selection
-Criteria for *in silico* sequence selection is described in the [paper](). Binding energy is calculated by gmx_MMPBSA and free energy of aggregation is calculated by PASTA2.0.
+Criteria for *in silico* sequence selection is described in the [paper](). Binding energy is calculated by gmx_MMPBSA and free energy of aggregation is calculated by PASTA2.0.<br>
+> **Note:** Complex structure is flipped to D-ligand and L-receptor after sequence design.
+
+
 
 ## License
 
