@@ -121,5 +121,5 @@ If you use this project in your research, please cite it using the following Bib
 ```
 
 ## Acknowledgements
-This design procedure involves multiple softwares related to protein design. We acknowledge and thank the developers of Rosetta, gromacs, gmx_MMPBSA and PASTA2.0 for their incredible and hard work.
+This design procedure involves multiple softwares related to protein design. We acknowledge and thank the developers of Naccess, Rosetta, gromacs, gmx_MMPBSA and PASTA2.0 for their incredible and hard work.
 
