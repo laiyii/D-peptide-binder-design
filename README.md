@@ -14,6 +14,8 @@ source ~/.bashrc
 ### Other applications in the workflow
 - [Naccess](http://www.bioinf.manchester.ac.uk/naccess/)
 - [Rosetta3.11](https://downloads.rosettacommons.org/software/academic/)
+- [gmx_MMPBSA](https://pubs.acs.org/doi/10.1021/acs.jctc.1c00645)
+- [PASTA](https://doi.org/10.1093/nar/gku399)
 
 ## Tutorial
 ### Prepare curled L-helical scaffolds
@@ -79,7 +81,7 @@ Then running loop modeling:
 ```shell
 loopmodel.mpi.linuxgccrelease @ccd.flags
 ```
-Required files for CCD loop modeling is in:<br>
+You can edit settings based on your task. Input files for CCD loop modeling is here:<br>
 ```text
 $DPEP/docking/loop_modeling
 ```
@@ -94,6 +96,22 @@ rosetta_scripts.mpi.linuxgccrelease @$DPEP/sequence_design/Dpep_design.flags
 ```
 
 ## License
+
+This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.
+
+## Citation
+
+If you use this project in your research, please cite it using the following BibTeX entry:
+
+```bibtex
+@misc{your_project_name,
+  author = {Your Name},
+  title = {Your Project Title},
+  year = {2024},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/yourusername/your-repository}},
+}
 
 ## Acknowledgements
 
