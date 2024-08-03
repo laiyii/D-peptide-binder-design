@@ -68,9 +68,11 @@ Docking tasks are performed in batch. The input options include:<br>
 - `-a` Atom ID, the ID of atom as the center of docking box.
 <br>
 Here's an example for batch_info:
+
 ```text
 $DPEP/docking/HelixScaffoldDocking/batch_info_example
 ```
+
 The input scaffold file and output file is separated by spaces.
 
 ### Loop modeling with CCD
