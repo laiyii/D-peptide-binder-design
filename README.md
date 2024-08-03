@@ -95,6 +95,9 @@ Sequence design is excecuted by RosettaScripts. A template xml file is in:<br>
 rosetta_scripts.mpi.linuxgccrelease @$DPEP/sequence_design/Dpep_design.flags
 ```
 
+### Sequence selection
+Criteria for *in silico* sequence selection is described in the [paper](). Binding energy is calculated by gmx_MMPBSA and free energy of aggregation is calculated by PASTA2.0.
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.
@@ -112,11 +115,8 @@ If you use this project in your research, please cite it using the following Bib
   journal = {GitHub repository},
   howpublished = {\url{https://github.com/yourusername/your-repository}},
 }
+```
 
 ## Acknowledgements
-
-
-
-
-
+This design procedure involves multiple softwares related to protein design. We acknowledge and thank the developers of Rosetta, gromacs, gmx_MMPBSA and PASTA2.0 for their incredible and hard work.
 
