@@ -65,7 +65,8 @@ chmod +x ./$DPEP/docking/HelixScaffoldDocking/HSD_batch.sh
 Docking tasks are performed in batch. The input options include:<br>
 - `-t` Processed target structure.
 - `-b` A text file containing input scaffolds location and output file names.
-- `-a` Atom ID, the ID of atom as the center of docking box.<br>
+- `-a` Atom ID, the ID of atom as the center of docking box.
+<br>
 Here's an example for batch_info:
 ```text
 $DPEP/docking/HelixScaffoldDocking/batch_info_example
