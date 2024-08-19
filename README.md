@@ -102,7 +102,10 @@ rosetta_scripts.mpi.linuxgccrelease @$DPEP/sequence_design/Dpep_design.flags
 Criteria for *in silico* sequence selection is described in the [paper](). Binding energy is calculated by gmx_MMPBSA and free energy of aggregation is calculated by PASTA2.0.<br>
 > **Note:** Complex structure is flipped to D-ligand and L-receptor after sequence design.
 
-
+## About database
+There are two csv files in the branch. <br>
+`geometry_score_database.csv` is the database used to collect geometry characters of helical ligands, PDB IDs are listed in the first column.<br>
+`interface_propensity_score_database.csv` is the database used to construct interface propensity scores. The first column is the PDB id, each structure is split into two parts to analyze ratios of different atoms at interface or surface, represented as chain IDs in the second column.
 
 ## License
 
