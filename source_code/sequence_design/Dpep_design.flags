@@ -1,9 +1,0 @@
--l pdblist
--corrections:beta_nov16
--ignore_zero_occupancy false
--nstruct 200
--holes:dalphaball $ROSETTA/main/source/external/DAlpahBall/DAlphaBall.gcc
--ex1
--ex2aro
--parser:protocol sequence_design_D_pep.xml
--out:path:pdb ./result
