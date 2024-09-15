@@ -1,10 +1,10 @@
 # Targeting SARS-CoV-2 Main Protease with D-peptides
-Welcome to D-peptide binder design project 😃 This repository is the source code for Targeting SARS-CoV-2 Main Protease with D-peptides.<br>
+😃 This repository is the source code and tutorial for *Targeting SARS-CoV-2 Main Protease with D-peptides*, including curved helical scaffold library generation and D-peptide docking program. If you have any questions, feel free to discuss in [Issues](https://github.com/laiyii/D-peptide-binder-design/issues).<br>
 ![workflow](https://github.com/laiyii/D-peptide-binder-design/blob/main/Dpep_fig1.png)
-If you have any questions, feel free to discuss in [Issues](https://github.com/laiyii/D-peptide-binder-design/issues) or contact Laiyi (fly_ccme@pku.edu.cn).
+
 
 ## Installation
-> **Note:** Ubuntu 20.04 is recommended for the procedure.
+> **Note:** Ubuntu 20.04 is recommended.
 ```shell
 git clone https://github.com/laiyii/D-peptide-binder-design.git .
 vim ~/.bashrc
@@ -18,7 +18,7 @@ source ~/.bashrc
 - [PASTA2.0](https://doi.org/10.1093/nar/gku399)
 
 ## Tutorial
-### Prepare curled L-helical scaffolds
+### Curled helical scaffold library generation
 You can generate scaffolds with customized needs.
 ```shell
 gcc $DPEP/curled_lib/script/PhiPsi2Helix.c -o $DPEP/curled_lib/script/PhiPsi2Helix -lm
@@ -31,7 +31,7 @@ $DPEP/curled_lib/script/curl_helix_gen.sh -o H_-62_-39_-3_-1_-60.pdb -outdir hel
 where `-o` and `-outdir` defines the output name and output directory, `-len` is the length of the polyALA sequence. Rational range of other parameters are shown in [Table S1].<br>
 We also provide helix scaffold library with various lengths (21 aa, 24 aa, 28 aa, 31 aa, 35 aa, 38 aa, and 42 aa) already generated in this work. Click [here](https://1drv.ms/u/c/1838b20033e25fae/EcgmP7MWDtxGiOSvWAjSSzwBrgVcsVyyKKK8k4YAJU5nkg?e=Xm1Qxd) to download.
 
-### Docking of the helical scaffolds to the target
+### Tutorial for HelixScaffoldDocking
 #### Flip the target into D-type
 Before docking, please flip your target to D-type, with residue names unchanged. Note that input file type should be a pdb file **with hydrogens removed**.
 ```shell
@@ -52,7 +52,7 @@ python3 $DPEP/docking/mirror_target/surf_protein.py -i_asa mono_mirror_noh.asa -
 ```
 `-i_asa` is the output file of Naccess.
 
-#### Helix scaffolds docking
+#### Docking process
 Compile the file first.
 ```shell
 gcc $DPEP/docking/HelixScaffoldDocking/HelixScaffoldDocking_batch.c -o $DPEP/docking/HelixScaffoldDocking/HelixScaffoldDocking_batch -lm
@@ -73,7 +73,7 @@ Here's an example for batch_info:
 $DPEP/docking/HelixScaffoldDocking/batch_info_example
 ```
 
-The input scaffold file and output file is separated by spaces.
+The input scaffold file and output file are separated by spaces.
 
 ### Loop modeling with CCD
 The following adjustments need to be made to the output structure.
@@ -84,22 +84,12 @@ Then running loop modeling:
 ```shell
 loopmodel.mpi.linuxgccrelease @ccd.flags
 ```
-You can edit settings based on your task. Input files for CCD loop modeling is here:<br>
-```text
-$DPEP/docking/loop_modeling
-```
+
 ### Sequence design
 Before sequence design, residue name of target (chain B) should be changed.
-```shell
-python3 $DPEP/sequence_design/change_chainB_to_D_type.py -i input_file.pdb
-```
-Sequence design is excecuted by RosettaScripts. A template xml file is in:<br>
-```text
-rosetta_scripts.mpi.linuxgccrelease @$DPEP/sequence_design/Dpep_design.flags
-```
 
 ### Sequence selection
-Criteria for *in silico* sequence selection is described in the [paper](). Binding energy is calculated by gmx_MMPBSA and free energy of aggregation is calculated by PASTA2.0.<br>
+Criteria for *in silico* sequence selection is described in the paper. Binding energy is calculated by gmx_MMPBSA and free energy of aggregation is calculated by PASTA2.0.<br>
 > **Note:** Complex structure is flipped to D-ligand and L-receptor after sequence design.
 
 ## About database
@@ -110,21 +100,6 @@ There are two csv files in the branch. <br>
 ## License
 
 This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.
-
-## Citation
-
-If you use this project in your research, please cite it using the following BibTeX entry:
-
-```bibtex
-@misc{your_project_name,
-  author = {Your Name},
-  title = {Your Project Title},
-  year = {2024},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/yourusername/your-repository}},
-}
-```
 
 ## Acknowledgements
 This design procedure involves multiple softwares related to protein design. We acknowledge and thank the developers of Naccess, Rosetta, gromacs, gmx_MMPBSA and PASTA2.0 for their incredible and hard work.
