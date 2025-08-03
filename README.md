@@ -1,6 +1,6 @@
 # Targeting SARS-CoV-2 Main Protease with D-peptides
 😃 This repository is the source code and tutorial for *Targeting SARS-CoV-2 Main Protease with D-peptides*, including curved helical scaffold library generation and D-peptide docking program. If you have any questions, feel free to discuss in [Issues](https://github.com/laiyii/D-peptide-binder-design/issues).<br>
-![workflow](https://github.com/laiyii/D-peptide-binder-design/blob/main/figs/Dpep_fig1.tif)
+![workflow](https://github.com/laiyii/D-peptide-binder-design/blob/main/figs/Dpep_fig1.jpeg)
 
 
 ## Installation
