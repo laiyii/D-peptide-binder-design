@@ -1,5 +1,5 @@
-# Targeting SARS-CoV-2 Main Protease with D-peptides
-😃 This repository is the source code and tutorial for *Targeting SARS-CoV-2 Main Protease with D-peptides*, including curved helical scaffold library generation and D-peptide docking program. If you have any questions, feel free to discuss in [Issues](https://github.com/laiyii/D-peptide-binder-design/issues).<br>
+# Docking tools and scaffold libs for *Targeting SARS-CoV-2 Receptor Binding Domain and Main Protease with D-peptides*
+This repository is the source code and tutorial for *Targeting SARS-CoV-2 Receptor Binding Domain and Main Protease with D-peptides*, including curved helical scaffold library generation and D-peptide docking program. If you have any questions, feel free to discuss in [Issues](https://github.com/laiyii/D-peptide-binder-design/issues).<br>
 ![workflow](https://github.com/laiyii/D-peptide-binder-design/blob/main/figs/Dpep_fig1.jpeg)
 
 
@@ -11,14 +11,9 @@ vim ~/.bashrc
 export DPEP="/path/to/D-peptide-binder-design/source_code"
 source ~/.bashrc
 ```
-### Other applications in the workflow
-- [Naccess](http://www.bioinf.manchester.ac.uk/naccess/)
-- [Rosetta3.11](https://downloads.rosettacommons.org/software/academic/)
-- [gmx_MMPBSA](https://pubs.acs.org/doi/10.1021/acs.jctc.1c00645)
-- [PASTA2.0](https://doi.org/10.1093/nar/gku399)
 
 ## Tutorial
-### Curled helical scaffold library generation
+### Curved helical scaffold library generation
 You can generate scaffolds with customized needs.
 ```shell
 gcc $DPEP/curled_lib/script/PhiPsi2Helix.c -o $DPEP/curled_lib/script/PhiPsi2Helix -lm
@@ -26,19 +21,38 @@ gcc $DPEP/curled_lib/script/PhiPsi2Helix.c -o $DPEP/curled_lib/script/PhiPsi2Hel
 Running PhiPsi2Helix to generate scaffolds with given parameters:
 ```shell
 chmod +x $DPEP/curled_lib/script/curl_helix_gen.sh
-$DPEP/curled_lib/script/curl_helix_gen.sh -o H_-62_-39_-3_-1_-60.pdb -outdir helix_lib -len 21 -phi0 -62.0 -delphi -3.0 -psi0 -39.0 -delpsi -1.0 -phase -60.0 --
+$DPEP/curled_lib/script/curl_helix_gen.sh -outdir <output_directory> -len <length> -paramlist <csv_file>
 ```
-where `-o` and `-outdir` defines the output name and output directory, `-len` is the length of the polyALA sequence. Rational range of other parameters are shown in [Table S1].<br>
-We also provide helix scaffold library with various lengths (21 aa, 24 aa, 28 aa, 31 aa, 35 aa, 38 aa, and 42 aa) already generated in this work. Click [here](https://1drv.ms/u/c/1838b20033e25fae/EcgmP7MWDtxGiOSvWAjSSzwBrgVcsVyyKKK8k4YAJU5nkg?e=Xm1Qxd) to download.
+where `-outdir` defines the output directory, `-len` is the length of the polyALA sequence. Range of other parameters are defined in <csv_file> (see $DPEP/curled_lib/script/input_params.csv), and output pdb file is named as `H_<len>_<phi0>_<delphi>_<psi0>_<delpsi>_<phase>.pdb`.
+We also provide helix scaffold library at various lengths (28 aa and 35 aa) already generated in this work. Click [here](https://pan.baidu.com/s/1lKv6-XoMh6dJfG7dW_JR4A?pwd=14kv) (extraction code: 14kv) to download.
 
-### Tutorial for HelixScaffoldDocking
-#### Flip the target into D-type
-Before docking, please flip your target to D-type, with residue names unchanged. Note that input file type should be a pdb file **with hydrogens removed**.
+### Tutorial for helix scaffold fitting
+#### Flip the target segment into D-type
+Before docking, please flip your target segment to D-type, with residue names unchanged. Note that input file type should be a pdb file **with hydrogens removed**.
 ```shell
 chmod +x $DPEP/docking/mirror_target/mirror_target.sh
 $DPEP/docking/mirror_target/mirror_target.sh -i your_input_file.pdb -o your_output_file.pdb
 ```
 The default output of `-o` is your_input_file_mirror.pdb
+
+#### L- scaffold fitting to D- reference segment
+You can fit scaffolds to extracted D- reference helical segment.
+```shell
+gcc $DPEP/docking/ScaffoldFitting/FitequationD.c -o $DPEP/docking/ScaffoldFitting/FitequationD -lm
+```
+Running FitequationD to generate fitted scaffolds:
+```shell
+$DPEP/docking/ScaffoldFitting/FitequationD [Dhelixtemplate.pdb] [fitted_output.pdb] [startResidueForFit default:0]
+```
+where `Dhelixtemplate.pdb` refers to the flipped target segment, `fitted_output.pdb` is the file name for fitted results. 'startResidueForFit' defines the start residue for fitting.
+
+
+
+
+
+### Tutorial for HelixScaffoldDocking
+#### Flip the target into D-type
+Before docking, please flip your target to D-type as mentioned above.
 #### Surface residues remark
 To generate grid scores, we need to define surface atoms (with atom-wise SASA larger than 1 Å²).
 ```shell
@@ -75,32 +89,14 @@ $DPEP/docking/HelixScaffoldDocking/batch_info_example
 
 The input scaffold file and output file are separated by spaces.
 
-### Loop modeling with CCD
-The following adjustments need to be made to the output structure.
-1. Replace the target structure with the initial structure (containing H atoms) and name it to chain B.
-2. Add H atoms to polyALA scaffold (ligand) and name it to chain A.
-3. Rearrange the complex structure, put ligand to the first.
-Then running loop modeling:
-```shell
-loopmodel.mpi.linuxgccrelease @ccd.flags
-```
-
-### Sequence design
-Before sequence design, residue name of target (chain B) should be changed.
-
-### Sequence selection
-Criteria for *in silico* sequence selection is described in the paper. Binding energy is calculated by gmx_MMPBSA and free energy of aggregation is calculated by PASTA2.0.<br>
-> **Note:** Complex structure is flipped to D-ligand and L-receptor after sequence design.
 
 ## About database
-There are two csv files in the branch. <br>
-`geometry_score_database.csv` is the database used to collect geometry characters of helical ligands, PDB IDs are listed in the first column.<br>
-`interface_propensity_score_database.csv` is the database used to construct interface propensity scores. The first column is the PDB id, each structure is split into two parts to analyze ratios of different atoms at interface or surface, represented as chain IDs in the second column.
+We provide information of helix ligand-protein complex database in `$DPEP/database/Hlig_protein_database.csv`, which contains PDBID, residue numbers of helical ligands and fitting results.
 
 ## License
 
 This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgements
-This design procedure involves multiple softwares related to protein design. We acknowledge and thank the developers of Naccess, Rosetta, gromacs, gmx_MMPBSA and PASTA2.0 for their incredible and hard work.
+This design procedure involves multiple softwares related to protein design. We acknowledge and thank the developers of Naccess, Rosetta, gromacs, gmx_MMPBSA, AggreScan and PASTA2.0 for their incredible and hard work.
 
