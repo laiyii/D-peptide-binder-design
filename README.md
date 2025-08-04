@@ -16,12 +16,12 @@ source ~/.bashrc
 ### Curved helical scaffold library generation
 You can generate scaffolds with customized needs.
 ```shell
-gcc $DPEP/curled_lib/script/PhiPsi2Helix.c -o $DPEP/curled_lib/script/PhiPsi2Helix -lm
+gcc $DPEP/curved_lib/script/PhiPsi2Helix.c -o $DPEP/curved_lib/script/PhiPsi2Helix -lm
 ```
 Running PhiPsi2Helix to generate scaffolds with given parameters:
 ```shell
-chmod +x $DPEP/curled_lib/script/curl_helix_gen.sh
-$DPEP/curled_lib/script/curl_helix_gen.sh -outdir <output_directory> -len <length> -paramlist <csv_file>
+chmod +x $DPEP/curved_lib/script/curl_helix_gen.sh
+$DPEP/curved_lib/script/curl_helix_gen.sh -outdir <output_directory> -len <length> -paramlist <csv_file>
 ```
 where `-outdir` defines the output directory, `-len` is the length of the polyALA sequence. Range of other parameters are defined in <csv_file> (see $DPEP/curled_lib/script/input_params.csv), and output pdb file is named as `H_<len>_<phi0>_<delphi>_<psi0>_<delpsi>_<phase>.pdb`.
 We also provide helix scaffold library at various lengths (28 aa and 35 aa) already generated in this work. Click [here](https://pan.baidu.com/s/1lKv6-XoMh6dJfG7dW_JR4A?pwd=14kv) (extraction code: 14kv) to download.
