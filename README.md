@@ -1,5 +1,5 @@
 # Docking tools and scaffold libs for *Targeting SARS-CoV-2 Receptor Binding Domain and Main Protease with D-peptides*
-This repository is the source code and tutorial for *Targeting SARS-CoV-2 Receptor Binding Domain and Main Protease with D-peptides*, including curved helical scaffold library generation and D-peptide docking program. If you have any questions, feel free to discuss in [Issues](https://github.com/laiyii/D-peptide-binder-design/issues).<br>
+This repository is the source code and tutorial for [*Targeting SARS-CoV-2 Receptor Binding Domain and Main Protease with D-peptides*](https://pubs.acs.org/doi/10.1021/acs.jcim.5c01839), including curved helical scaffold library generation and D-peptide docking program. If you have any questions, feel free to discuss in [Issues](https://github.com/laiyii/D-peptide-binder-design/issues).<br>
 ![workflow](https://github.com/laiyii/D-peptide-binder-design/blob/main/figs/Dpep_fig1.jpeg)
 
 
